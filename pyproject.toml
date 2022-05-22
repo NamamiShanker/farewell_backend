@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "farewell_backend"
+version = "0.1.0"
+description = "IIT Goa 2018 batch farewell website backend"
+authors = ["Namami Shanker"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Flask = "^2.1.2"
+Flask-SQLAlchemy = "^2.5.1"
+Flask-Migrate = "^3.1.0"
+marshmallow = "^3.15.0"
+SQLAlchemy = "^1.4.36"
+python-dotenv = "^0.20.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
