@@ -25,6 +25,10 @@ class User:
 		)
 
 	@classmethod
+	def get_all(cls):
+		return [cls.instance_creator(user_db) for user_db in UserDB.query.all()]
+
+	@classmethod
 	def get_by_branch(cls, branch: str):
 		return [
 		    cls.instance_creator(user_db)
@@ -37,3 +41,16 @@ class User:
 		if user_db is None:
 			return None
 		return cls.instance_creator(user_db)
+
+	@classmethod
+	def get_by_email_id(cls, email_id: str):
+		user_db = UserDB.get_first({"email_id": email_id})
+		if user_db is None:
+			return None
+		return cls.instance_creator(user_db)
+
+	def register_google_id(self, google_id: str) -> None:
+		user_db: UserDB = UserDB.get_first({"user_id": self.user_id})
+		if(user_db):
+			user_db.google_id = google_id
+			user_db.update()
